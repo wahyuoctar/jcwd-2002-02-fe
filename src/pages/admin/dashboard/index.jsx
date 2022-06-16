@@ -11,7 +11,6 @@ import axiosInstance from "config/api";
 import moment from "moment";
 import Page from "components/Page";
 
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 const DashboardPage = () => {
   const [pemesanan, setPemesanan] = useState([]);
   const [lastUpdated, setLastUpdated] = useState(moment());
