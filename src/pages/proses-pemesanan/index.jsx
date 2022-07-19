@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unneeded-ternary */
-/* eslint-disable no-unused-vars */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-console */
 import {
