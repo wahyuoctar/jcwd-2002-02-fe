@@ -10,6 +10,7 @@ const BannerJaminanBox = ({ imgUrl, imgAlt, title, caption }) => {
         backgroundColor: "#F6FAFB",
         display: "flex",
         alignItems: "center",
+        mb: { xs: "20px", sm: 0 },
       }}
       elevation={1}
     >

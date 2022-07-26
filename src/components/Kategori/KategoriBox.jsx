@@ -12,7 +12,10 @@ const KategoriBox = ({ imgUrl, imgAlt, title, id }) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        width: "195px",
+        width: {
+          xs: "195px",
+          md: "195px",
+        },
         height: "119px",
         borderRadius: "16px",
         mx: "8px",

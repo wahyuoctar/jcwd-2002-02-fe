@@ -109,6 +109,7 @@ const DetailTransaksiPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          mb: "100px",
         }}
       >
         <Stack sx={{ width: "800px" }}>
