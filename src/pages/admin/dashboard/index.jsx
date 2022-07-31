@@ -263,7 +263,9 @@ const DashboardPage = () => {
               <CardWithCircularBar
                 title="Revenue Hari Ini"
                 amount={`Rp. ${
-                  todayRevenue?.todayRevenue?.result?.toLocaleString("id") || 0
+                  parseInt(
+                    todayRevenue?.todayRevenue?.result || 0
+                  ).toLocaleString("id") || 0
                 }`}
                 value={Math.abs(
                   todayRevenue?.todayRevenue?.result -
@@ -277,6 +279,12 @@ const DashboardPage = () => {
                         todayRevenue?.yesterdayRevenue?.result) *
                         100
                     ).toFixed(1)
+                  ) ||
+                  !isFinite(
+                    ((todayRevenue?.todayRevenue?.result -
+                      todayRevenue?.yesterdayRevenue?.result) /
+                      todayRevenue?.yesterdayRevenue?.result) *
+                      100
                   )
                     ? 0
                     : Math.abs(
@@ -308,6 +316,12 @@ const DashboardPage = () => {
                         todayTransaction.yesterdayOrder) *
                         100
                     ).toFixed(1)
+                  ) ||
+                  !isFinite(
+                    ((todayTransaction.todayOrder -
+                      todayTransaction.yesterdayOrder) /
+                      todayTransaction.yesterdayOrder) *
+                      100
                   )
                     ? 0
                     : Math.abs(
@@ -327,7 +341,7 @@ const DashboardPage = () => {
               />
               <CardWithCircularBar
                 title="Sisa Stok Hari Ini"
-                amount={todayStok.todayStok}
+                amount={parseInt(todayStok.todayStok || 0).toLocaleString("id")}
                 value={Math.abs(todayStok.todayStok - todayStok.yesterdayStok)}
                 percentage={
                   isNaN(
@@ -336,6 +350,11 @@ const DashboardPage = () => {
                         todayStok.yesterdayStok) *
                         100
                     ).toFixed(1)
+                  ) ||
+                  !isFinite(
+                    ((todayStok.todayStok - todayStok.yesterdayStok) /
+                      todayStok.yesterdayStok) *
+                      100
                   )
                     ? 0
                     : Math.abs(

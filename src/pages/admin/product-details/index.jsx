@@ -228,10 +228,8 @@ const ProductDetails = () => {
   }, [selectedProduct, sort]);
 
   useEffect(() => {
-    if (revenueRawData.length) {
-      convertRevenueDataByMonth();
-      convertRevenueNotByMonth();
-    }
+    convertRevenueDataByMonth();
+    convertRevenueNotByMonth();
   }, [revenueRawData]);
 
   return (
@@ -276,13 +274,16 @@ const ProductDetails = () => {
             <Grid item xs={4}>
               <ReportCart
                 title="Quantity Sold"
-                data={qtySold.data}
+                data={qtySold.data || 0}
                 percentange={
                   isNaN(
                     Math.abs(
                       ((qtySold.data - qtySold.prevData) / qtySold.prevData) *
                         100
                     ).toFixed(1)
+                  ) ||
+                  !isFinite(
+                    ((qtySold.data - qtySold.prevData) / qtySold.prevData) * 100
                   )
                     ? 0
                     : Math.abs(
@@ -304,6 +305,11 @@ const ProductDetails = () => {
                         viewCount.prevData) *
                         100
                     ).toFixed(1)
+                  ) ||
+                  !isFinite(
+                    ((viewCount.data - viewCount.prevData) /
+                      viewCount.prevData) *
+                      100
                   )
                     ? 0
                     : Math.abs(
@@ -333,11 +339,19 @@ const ProductDetails = () => {
                         (productSoldCount.prevData / viewCount.prevData)) *
                         100
                     ).toFixed(1)
+                  ) ||
+                  !isFinite(
+                    ((productSoldCount.data / viewCount.data -
+                      productSoldCount.prevData / viewCount.prevData) /
+                      (productSoldCount.prevData / viewCount.prevData)) *
+                      100
                   )
                     ? 0
                     : Math.abs(
-                        ((viewCount.data - viewCount.prevData) /
-                          viewCount.prevData) *
+                        ((productSoldCount.data / viewCount.data -
+                          productSoldCount.prevData / viewCount.prevData) /
+                          (productSoldCount.prevData / viewCount.prevData) -
+                          1) *
                           100
                       ).toFixed(1)
                 }
