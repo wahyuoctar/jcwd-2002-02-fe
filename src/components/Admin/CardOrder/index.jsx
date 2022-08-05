@@ -108,7 +108,6 @@ const CardOrder = ({
           buyersName={detail.user.username}
           transaksiId={transaksiId}
           orderCode={orderCode}
-          addressDetail={detail.address}
         />
       );
     }
