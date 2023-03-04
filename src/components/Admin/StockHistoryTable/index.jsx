@@ -1,10 +1,10 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import {
   Box,
   MenuItem,
@@ -12,9 +12,9 @@ import {
   Select,
   styled,
   Typography,
-} from "@mui/material";
-import moment from "moment";
-import { ceil } from "lodash";
+} from '@mui/material';
+import moment from 'moment';
+import { ceil } from 'lodash';
 
 const StockHistoryTable = ({
   count,
@@ -36,22 +36,22 @@ const StockHistoryTable = ({
 
   const columns = [
     {
-      props: "No",
+      props: 'No',
     },
     {
-      props: "Tanggal",
+      props: 'Tanggal',
     },
     {
-      props: "Aktivitas",
+      props: 'Aktivitas',
     },
     {
-      props: "Keluar",
+      props: 'Keluar',
     },
     {
-      props: "Masuk",
+      props: 'Masuk',
     },
     {
-      props: "Tgl. Kadaluwarsa",
+      props: 'Tgl. Kadaluwarsa',
     },
   ];
 
@@ -66,8 +66,8 @@ const StockHistoryTable = ({
       return (
         <TableRow
           sx={{
-            ":nth-of-type(even)": {
-              backgroundColor: "#D3D3D3",
+            ':nth-of-type(even)': {
+              backgroundColor: '#D3D3D3',
             },
           }}
         >
@@ -75,17 +75,17 @@ const StockHistoryTable = ({
             {val.nomor}
           </TableCell>
           <TableCell align="center">
-            {moment(val.createdAt).format("DD MMMM YYYY") || "-"}
+            {moment(val.createdAt).format('DD MMMM YYYY') || '-'}
           </TableCell>
-          <TableCell align="center">{val.aktivitas || "-"}</TableCell>
+          <TableCell align="center">{val.aktivitas || '-'}</TableCell>
           <TableCell align="center">
-            {val.aktivitas === "Penerimaan Barang" ? 0 : val.jumlahStok}
-          </TableCell>
-          <TableCell align="center">
-            {val.aktivitas === "Penerimaan Barang" ? val.jumlahStok : 0}
+            {val.aktivitas === 'Penerimaan Barang' ? 0 : val.jumlahStok}
           </TableCell>
           <TableCell align="center">
-            {moment(val.expDate).format("DD MMMM YYYY") || "-"}
+            {val.aktivitas === 'Penerimaan Barang' ? val.jumlahStok : 0}
+          </TableCell>
+          <TableCell align="center">
+            {val.expDate ? moment(val.expDate).format('DD MMMM YYYY') : '-'}
           </TableCell>
         </TableRow>
       );
@@ -108,7 +108,7 @@ const StockHistoryTable = ({
           padding="10px"
         >
           <Typography>
-            Menampilkan {rows.length + rowPerPage * (page - 1)} dari {count}{" "}
+            Menampilkan {rows.length + rowPerPage * (page - 1)} dari {count}{' '}
             data
           </Typography>
           <Box display="flex" alignItems="center">
